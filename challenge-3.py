@@ -46,7 +46,6 @@ grouped_counties = MD_counties.groupby('county')
 grouped_counties.sum()['cases']
 grouped_counties.sum()['deaths']
 
-grouped_counties.sum()['deaths']/grouped_counties.sum()['cases']
 
 
 
