@@ -83,11 +83,8 @@ plt.title('COVID-19 Total Cases and Deaths in Maryland')
 plots = cases + deaths
 labs = [l.get_label() for l in plots]
 plt.legend(plots, labs, loc=0)
-plt.savefig(os.path.join(path, 'covid_total_MD'))
+#plt.savefig(os.path.join(path, 'covid_total_MD'))
 plt.show()
-
-# We can see a flattening of the increase in total COVID-19 deaths and cases
-# in Maryland over time.
 
 
 # My second graph looks at new daily cases and deaths in Maryland.
@@ -106,9 +103,6 @@ labs = [l.get_label() for l in plots]
 plt.legend(plots, labs)
 plt.savefig(os.path.join(path, 'covid_daily_new_MD'))
 plt.show()
-
-# New daily cases and deaths initially increased but have on average decreased
-# over time.
 
 
 # From here, I will create two scatterplots.
@@ -172,7 +166,7 @@ black_per_county = county_race_groups.apply(lambda g: len(list(g))).unstack()[2]
 
 # Calculating black share of county population and adding it to select_counties.
 
-pct_black = [(a/b)*100 for a,b in zip(black_per_county, county_pops)]
+pct_black = [(a/b)*100 for a,b in zip(black_per_county, county_pop)]
 select_counties = pd.DataFrame(black_per_county).reset_index()
 select_counties['pct_black'] = pct_black
 
@@ -188,12 +182,8 @@ sns.scatterplot(x='pct_black', y='deaths', data=select_counties)
 plt.ylabel('Deaths per 1000 people')
 plt.xlabel('Black share of population (%)')
 plt.title('Deaths per 1000 people in MD counties by black share of population');
-plt.savefig(os.path.join(path, 'deaths_black_county_MD'))
+#plt.savefig(os.path.join(path, 'deaths_black_county_MD'))
 plt.show()
-
-# It appears that where black people compose a higher share of the population,
-# there tend to be more COVID-19 deaths per 1000 people. However, there are
-# outliers that invite further investigation.
 
 
 # For my second scatterplot, I add a measure of population density from
@@ -212,9 +202,5 @@ sns.scatterplot(x='density', y='deaths', data=select_counties)
 plt.ylabel('Deaths per 1000 people')
 plt.xlabel('Population density')
 plt.title('Deaths per 1000 people in MD counties by population density')
-plt.savefig(os.path.join(path, 'deaths_density_county_MD'))
+#plt.savefig(os.path.join(path, 'deaths_density_county_MD'))
 plt.show()
-
-# Counties with greater density see higher COVID-19 deaths per 1000 people. It is
-# noteworthy that the county with the most density has lower deaths than we would
-# expect.
